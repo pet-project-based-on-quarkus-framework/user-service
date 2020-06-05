@@ -1,0 +1,52 @@
+version: '3.2'
+
+services:
+  # Launch Elasticsearch.
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.2
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    networks:
+      - elk
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash-oss:6.8.2
+    volumes:
+      - source: $HOME/pipelines
+        target: /usr/share/logstash/pipeline
+        type: bind
+    ports:
+      - "12201:12201/udp"
+      - "5000:5000"
+      - "9600:9600"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:6.8.2
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  # Launch PostgreSQL Database.
+  postgresDB:
+    image: postgres
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: "developer"
+      POSTGRES_PASSWORD: "strong_password"
+      POSTGRES_DB: "quarkus-user-service-db-dev"
+
+
+networks:
+  elk:
+    driver: bridge
