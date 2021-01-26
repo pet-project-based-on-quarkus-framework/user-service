@@ -36,6 +36,6 @@ jobs:
 
       - name: Grant execute permission for mvnw
         run: chmod +x mvnw
-      
-      - name: Build with Gradle
-        run: ./mvnw clean build --continue
+
+      - name: Build project with Maven
+        run: mvn -B package --file pom.xml
