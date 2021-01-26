@@ -1,4 +1,4 @@
-# user-service project
+# user-service
 
 
 
