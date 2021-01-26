@@ -13,9 +13,9 @@ VALUES (4, 'Graham', 'Allister', 'ga', 'g@mail.com', 'strong_password', TO_DATE(
 INSERT INTO usr (id, first_name, last_name, username,  email, password, birthday)
 VALUES (5, 'Margaret', 'Grant', 'mg', 'z@mail.com', 'strong_password', TO_DATE('12-JAN-2011', 'DD-MON-YYYY'));
 
-BEGIN;
+-- BEGIN;
 -- protect against concurrent inserts while you update the counter
-LOCK TABLE usr IN EXCLUSIVE MODE;
+-- LOCK TABLE usr IN EXCLUSIVE MODE;
 -- Update the sequence
-SELECT setval('hibernate_sequence', COALESCE((SELECT MAX(id)+1 FROM usr), 1), false);
-COMMIT;
+-- SELECT setval('hibernate_sequence', COALESCE((SELECT MAX(id)+1 FROM usr), 1), false);
+-- COMMIT;

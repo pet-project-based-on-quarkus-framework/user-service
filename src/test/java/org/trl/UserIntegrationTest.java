@@ -26,16 +26,16 @@ public class UserIntegrationTest {
     @InjectMock
     DateTimeService dateTimeServiceMock;
 
-    @Test
-    void create() {
-        final String bodyJSONRequest = "{\"birthday\":\"2000-01-28\",\"email\":\"newUser@mail.com\",\"firstName\":\"NewUserFirstName\",\"lastName\":\"NewUserLastName\",\"password\":\"strong_password\",\"username\":\"ns\"}";
-        given()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(bodyJSONRequest)
-                .when().post("/users")
-                .then()
-                .statusCode(HttpURLConnection.HTTP_CREATED);
-    }
+//    @Test
+//    void create() {
+//        final String bodyJSONRequest = "{\"birthday\":\"2000-01-28\",\"email\":\"newUser@mail.com\",\"firstName\":\"NewUserFirstName\",\"lastName\":\"NewUserLastName\",\"password\":\"strong_password\",\"username\":\"ns\"}";
+//        given()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .body(bodyJSONRequest)
+//                .when().post("/users")
+//                .then()
+//                .statusCode(HttpURLConnection.HTTP_CREATED);
+//    }
 
 //    @Test
 //    public void create_FieldFirstNameIsEmpty() {
