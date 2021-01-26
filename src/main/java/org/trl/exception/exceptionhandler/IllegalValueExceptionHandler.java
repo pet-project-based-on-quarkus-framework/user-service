@@ -1,28 +1,25 @@
-package org.trl.exception.exception_handler;
+package org.trl.exception.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.exception.UserNotFoundException;
+import org.trl.exception.IllegalValueException;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
-import java.net.HttpURLConnection;
 
-@Provider
-public class UserNotFoundExceptionHandler implements ExceptionMapper<UserNotFoundException> {
+public class IllegalValueExceptionHandler implements ExceptionMapper<IllegalValueException> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserNotFoundExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IllegalValueException.class);
 
     @Override
-    public Response toResponse(UserNotFoundException exception) {
+    public Response toResponse(IllegalValueException exception) {
 
         LOG.error("Failed to handle request", exception);
 
-        int statusCode = HttpURLConnection.HTTP_NOT_FOUND;
+        int statusCode = 422;
 
         JsonObjectBuilder entityBuilder = Json.createObjectBuilder()
                 .add("exceptionType", exception.getClass().getName())
