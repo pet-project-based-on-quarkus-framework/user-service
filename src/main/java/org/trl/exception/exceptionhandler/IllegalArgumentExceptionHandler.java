@@ -1,8 +1,7 @@
-package org.trl.exception.exception_handler;
+package org.trl.exception.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.exception.DataNotFoundException;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
@@ -10,19 +9,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.net.HttpURLConnection;
 
 @Provider
-public class DataNotFoundExceptionHandler implements ExceptionMapper<DataNotFoundException> {
+public class IllegalArgumentExceptionHandler implements ExceptionMapper<IllegalArgumentException> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DataNotFoundExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IllegalArgumentExceptionHandler.class);
 
     @Override
-    public Response toResponse(DataNotFoundException exception) {
+    public Response toResponse(IllegalArgumentException exception) {
 
         LOG.error("Failed to handle request", exception);
 
-        int statusCode = HttpURLConnection.HTTP_NOT_FOUND;
+        int statusCode = 422;
 
         JsonObjectBuilder entityBuilder = Json.createObjectBuilder()
                 .add("exceptionType", exception.getClass().getName())
