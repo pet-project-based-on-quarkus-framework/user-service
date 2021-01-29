@@ -1,7 +1,8 @@
 package org.trl.service;
 
 
-import org.trl.controller.dto.UserDTO;
+import org.trl.model.dto.UserDto;
+import org.trl.repository.entity.UserEntity;
 
 /**
  * This interface is designed to support service for {@literal UserDTO}.
@@ -10,11 +11,11 @@ import org.trl.controller.dto.UserDTO;
  */
 public interface UserService {
 
-    void create(UserDTO user);
+    void create(UserDto user);
 
-    UserDTO get(Long id);
+    UserEntity get(Long id);
 
-    UserDTO update(Long id, UserDTO user);
+    UserDto update(Long id, UserDto user);
 
     void delete(Long id);
 }
