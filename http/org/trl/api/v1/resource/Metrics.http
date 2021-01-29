@@ -1,0 +1,23 @@
+###
+GET http://localhost:8080/metrics/application
+Accept: application/json
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/metrics/application
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/metrics/application
+Accept: application/json
+
+###
+GET http://localhost:8080/metrics
+Accept: application/json
+
+### Kuberntes NodePort.
+GET http://172.18.0.5:30601/metrics
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/metrics
+Accept: application/json

@@ -1,0 +1,35 @@
+###
+GET http://localhost:8080/health/live
+Accept: application/json
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/health/live
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/health/live
+Accept: application/json
+
+###
+GET http://localhost:8080/health/ready
+Accept: application/json
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/health/ready
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/health/ready
+Accept: application/json
+
+###
+GET http://localhost:8080/health
+Accept: application/json
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/health
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/health
+Accept: application/json

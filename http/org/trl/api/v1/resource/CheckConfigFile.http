@@ -1,0 +1,19 @@
+###
+GET http://localhost:8888
+Accept: application/json
+
+###
+GET http://localhost:8888/user-service.properties
+Accept: application/json
+
+###
+GET http://localhost:8888/user-service/default
+Accept: application/json
+
+###
+GET http://localhost:8888/user-service/dev
+Accept: application/json
+
+###
+GET http://localhost:8888/user-service/test
+Accept: application/json

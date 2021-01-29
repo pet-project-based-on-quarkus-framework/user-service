@@ -1,0 +1,12 @@
+###
+GET http://localhost:8080/openapi
+Accept: application/json
+
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/openapi
+Accept: application/json
+
+### Kubernetes Ingress.
+GET http://localhost:80/app/openapi
+Accept: application/json

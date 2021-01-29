@@ -1,0 +1,82 @@
+########################################################################################################################
+####################################################### DELETE #########################################################
+########################################################################################################################
+DELETE  http://localhost:8080/users/1
+Content-Type: application/json
+
+###
+DELETE  http://localhost:8080/users/100
+Content-Type: application/json
+
+########################################################################################################################
+####################################################### PACHT ##########################################################
+########################################################################################################################
+###
+PATCH http://localhost:8080/users/2
+Content-Type: application/json
+
+{"birthday":"2000-01-18","email":"8l@mail.com","firstName":"8Carlos","lastName":"8Rodriguez","password":"8strong_password","username":"8cr"}
+
+### Illegal Parameter ID.
+PATCH http://localhost:8080/users/0
+Content-Type: application/json
+
+{"birthday":"2000-01-18","email":"8l@mail.com","firstName":"8Carlos","lastName":"8Rodriguez","password":"8strong_password","username":"8cr"}
+
+### Not Found User By ID.
+PATCH http://localhost:8080/users/100
+Content-Type: application/json
+
+{"birthday":"2000-01-18","email":"8l@mail.com","firstName":"8Carlos","lastName":"8Rodriguez","password":"8strong_password","username":"8cr"}
+
+########################################################################################################################
+####################################################### POST ###########################################################
+########################################################################################################################
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{"birthday":"2000-01-25","email":"test2@mail.com","firstName":"TestFirstName2","lastName":"TestLastName2","password":"strong_password","username":"test2"}
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{"birthday":"2000-01-25","email":"test@mail.com","firstName":"TestFirstName","lastName":"TestLastName","password":"strong_password","username":"test"}
+
+### Kubernetes NodePort
+POST http://172.18.0.4:30601/users
+Content-Type: application/json
+
+{"birthday":"2000-01-25","email":"test1@mail.com","firstName":"TestFirstName1","lastName":"TestLastName1","password":"strong_password","username":"test1"}
+
+### Kubernetes Ingress
+POST http://localhost:80/app/users
+Content-Type: application/json
+
+{"birthday":"2000-01-25","email":"test@mail.com","firstName":"TestFirstName","lastName":"TestLastName","password":"strong_password","username":"test"}
+
+
+
+########################################################################################################################
+####################################################### GET ############################################################
+########################################################################################################################
+### User with identifier '123456789' not found
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/123456789
+Accept: application/json
+
+### User Id must be greater than or equal to 1
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/0
+Accept: application/json
+
+###
+GET http://{{host}}:{{backend_port}}/{{version_api}}/users/1
+Accept: application/json
+
+### Kubernetes NodePort
+GET http://172.18.0.4:30601/users/1
+Content-Type: application/json
+
+### Kubernetes Ingress
+GET http://localhost:80/app/users/1
+Content-Type: application/json

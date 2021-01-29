@@ -1,0 +1,11 @@
+###
+GET http://localhost:8080/swaggerUI
+Accept: application/json
+
+### Kubernetes NodePort.
+GET http://172.18.0.5:30601/swaggerUI
+Accept: application/json
+
+### Kubernetes Ingress. Not work !!!
+GET http://localhost:80/app/swaggerUI
+Accept: application/json
