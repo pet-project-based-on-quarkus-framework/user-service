@@ -1,4 +1,4 @@
-package org.trl.controller.dto;
+package org.trl.model.dto;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author Tsyupryk Roman
  */
 @Schema(name = "User", description = "POJO that represent a user.")
-public class UserDTO {
+public class UserDto {
 
     @Schema(example = "100", minimum = "0", exclusiveMinimum = true, description = "ID of user.", nullable = true, implementation = Long.class, readOnly = true)
     private Long id;
@@ -34,7 +34,7 @@ public class UserDTO {
     @Schema(required = true, example = "2000-01-01", description = "Birthday of user.", implementation = LocalDate.class)
     private LocalDate birthday;
 
-    public UserDTO() {
+    public UserDto() {
     }
 
     public Long getId() {
@@ -96,19 +96,20 @@ public class UserDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserDTO userDTO = (UserDTO) o;
-        return Objects.equals(id, userDTO.id) &&
-                Objects.equals(firstName, userDTO.firstName) &&
-                Objects.equals(lastName, userDTO.lastName) &&
-                Objects.equals(username, userDTO.username) &&
-                Objects.equals(email, userDTO.email) &&
-                Objects.equals(birthday, userDTO.birthday);
+        if (!(o instanceof UserDto)) return false;
+        UserDto userDto = (UserDto) o;
+        return Objects.equals(id, userDto.id)
+                && Objects.equals(firstName, userDto.firstName)
+                && Objects.equals(lastName, userDto.lastName)
+                && Objects.equals(username, userDto.username)
+                && Objects.equals(email, userDto.email)
+                && Objects.equals(password, userDto.password)
+                && Objects.equals(birthday, userDto.birthday);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, username, email, birthday);
+        return Objects.hash(id, firstName, lastName, username, email, password, birthday);
     }
 
     @Override
@@ -122,4 +123,75 @@ public class UserDTO {
                 ", birthday=" + birthday +
                 '}';
     }
+
+    public static final class Builder {
+
+        private Long id;
+
+        private String firstName;
+
+        private String lastName;
+
+        private String username;
+
+        private String email;
+
+        private String password;
+
+        private LocalDate birthday;
+
+        public Builder() {
+        }
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder withBirthday(LocalDate birthday) {
+            this.birthday = birthday;
+            return this;
+        }
+
+        public UserDto build() {
+            UserDto result = new UserDto();
+
+            result.setId(this.id);
+            result.setFirstName(this.firstName);
+            result.setLastName(this.lastName);
+            result.setUsername(this.username);
+            result.setEmail(this.email);
+            result.setPassword(this.password);
+            result.setBirthday(this.birthday);
+
+            return result;
+        }
+
+    }
+
 }
