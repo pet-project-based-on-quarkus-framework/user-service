@@ -105,17 +105,12 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName) &&
-                Objects.equals(username, that.username) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(birthday, that.birthday);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, username, email, birthday);
+        return Objects.hash(id);
     }
 
     @Override
@@ -129,4 +124,75 @@ public class UserEntity {
                 ", birthday=" + birthday +
                 '}';
     }
+
+    public static final class Builder {
+
+        private Long id;
+
+        private String firstName;
+
+        private String lastName;
+
+        private String username;
+
+        private String email;
+
+        private String password;
+
+        private LocalDate birthday;
+
+        public Builder() {
+        }
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder withBirthday(LocalDate birthday) {
+            this.birthday = birthday;
+            return this;
+        }
+
+        public UserEntity build() {
+            UserEntity result = new UserEntity();
+
+            result.setId(this.id);
+            result.setFirstName(this.firstName);
+            result.setLastName(this.lastName);
+            result.setUsername(this.username);
+            result.setEmail(this.email);
+            result.setPassword(this.password);
+            result.setBirthday(this.birthday);
+
+            return result;
+        }
+
+    }
+
 }
