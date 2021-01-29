@@ -2,8 +2,8 @@ package org.trl.api.v1.resource.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.exception.UserNotFoundException;
-import org.trl.service.DateTimeService;
+import org.trl.core.service.exception.UserNotFoundException;
+import org.trl.core.service.DateTimeService;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;

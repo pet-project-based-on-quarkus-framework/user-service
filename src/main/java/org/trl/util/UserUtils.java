@@ -2,7 +2,7 @@ package org.trl.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.model.dto.UserDto;
+import org.trl.core.dto.UserDto;
 import org.trl.exception.IllegalValueException;
 
 import static java.lang.String.format;

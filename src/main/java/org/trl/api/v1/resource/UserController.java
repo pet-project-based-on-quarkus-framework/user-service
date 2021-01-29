@@ -13,11 +13,11 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.trl.config.ApiVersion;
-import org.trl.exception.UserNotFoundException;
-import org.trl.model.dto.UserDto;
-import org.trl.repository.entity.UserEntity;
-import org.trl.service.UserService;
-import org.trl.service.converter.UserConverter;
+import org.trl.core.service.exception.UserNotFoundException;
+import org.trl.core.dto.UserDto;
+import org.trl.core.entity.UserEntity;
+import org.trl.core.service.UserService;
+import org.trl.core.converter.UserConverter;
 
 import javax.inject.Inject;
 import javax.validation.constraints.Min;

@@ -1,4 +1,4 @@
-package org.trl.service;
+package org.trl.core.service;
 
 import java.time.LocalDateTime;
 import java.util.Date;

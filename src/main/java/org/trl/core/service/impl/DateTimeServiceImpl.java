@@ -1,6 +1,6 @@
-package org.trl.service.impl;
+package org.trl.core.service.impl;
 
-import org.trl.service.DateTimeService;
+import org.trl.core.service.DateTimeService;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDateTime;

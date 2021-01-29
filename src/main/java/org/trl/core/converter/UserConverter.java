@@ -1,9 +1,9 @@
-package org.trl.service.converter;
+package org.trl.core.converter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.model.dto.UserDto;
-import org.trl.repository.entity.UserEntity;
+import org.trl.core.dto.UserDto;
+import org.trl.core.entity.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;

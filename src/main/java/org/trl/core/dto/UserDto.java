@@ -1,4 +1,4 @@
-package org.trl.model.dto;
+package org.trl.core.dto;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 

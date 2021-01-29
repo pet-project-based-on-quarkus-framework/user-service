@@ -1,4 +1,4 @@
-package org.trl.model.dto;
+package org.trl.core.dto;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

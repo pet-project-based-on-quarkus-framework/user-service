@@ -1,10 +1,10 @@
-package org.trl.service.converter;
+package org.trl.core.converter;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.trl.model.dto.UserDto;
-import org.trl.repository.entity.UserEntity;
+import org.trl.core.dto.UserDto;
+import org.trl.core.entity.UserEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 

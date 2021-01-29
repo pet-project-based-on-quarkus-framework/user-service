@@ -1,4 +1,4 @@
-package org.trl.repository.entity;
+package org.trl.core.entity;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;

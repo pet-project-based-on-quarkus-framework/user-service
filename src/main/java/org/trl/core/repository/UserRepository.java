@@ -1,9 +1,9 @@
-package org.trl.repository;
+package org.trl.core.repository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.exception.UserNotFoundException;
-import org.trl.repository.entity.UserEntity;
+import org.trl.core.service.exception.UserNotFoundException;
+import org.trl.core.entity.UserEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

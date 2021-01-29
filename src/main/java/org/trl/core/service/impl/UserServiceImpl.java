@@ -1,12 +1,12 @@
-package org.trl.service.impl;
+package org.trl.core.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.model.dto.UserDto;
-import org.trl.repository.UserRepository;
-import org.trl.repository.entity.UserEntity;
-import org.trl.service.UserService;
-import org.trl.service.converter.UserConverter;
+import org.trl.core.dto.UserDto;
+import org.trl.core.repository.UserRepository;
+import org.trl.core.entity.UserEntity;
+import org.trl.core.service.UserService;
+import org.trl.core.converter.UserConverter;
 import org.trl.util.UserUtils;
 
 import javax.enterprise.context.ApplicationScoped;

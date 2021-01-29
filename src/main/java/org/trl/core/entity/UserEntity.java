@@ -1,4 +1,4 @@
-package org.trl.repository.entity;
+package org.trl.core.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

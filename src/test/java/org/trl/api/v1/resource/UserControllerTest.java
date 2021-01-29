@@ -1,10 +1,8 @@
 package org.trl.api.v1.resource;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.mockito.InjectMock;
 import org.junit.jupiter.api.Test;
-import org.trl.model.dto.UserDto;
-import org.trl.service.DateTimeService;
+import org.trl.core.dto.UserDto;
 
 import javax.json.bind.JsonbBuilder;
 import java.net.HttpURLConnection;

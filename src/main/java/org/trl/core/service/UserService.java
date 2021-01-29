@@ -1,8 +1,7 @@
-package org.trl.service;
+package org.trl.core.service;
 
-
-import org.trl.model.dto.UserDto;
-import org.trl.repository.entity.UserEntity;
+import org.trl.core.dto.UserDto;
+import org.trl.core.entity.UserEntity;
 
 /**
  * This interface is designed to support service for {@literal UserDTO}.

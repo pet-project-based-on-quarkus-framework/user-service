@@ -1,11 +1,5 @@
 package org.trl;
 
-import org.trl.model.dto.ApiErrorDto;
-
-import static io.restassured.RestAssured.given;
-import static java.lang.String.format;
-import static org.hamcrest.CoreMatchers.is;
-
 //@QuarkusTest
 public class UserIntegrationTest {
 

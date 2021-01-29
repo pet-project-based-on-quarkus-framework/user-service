@@ -1,11 +1,11 @@
-package org.trl.model.dto;
+package org.trl.core.dto;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
 class UserDtoBuilderTest {
