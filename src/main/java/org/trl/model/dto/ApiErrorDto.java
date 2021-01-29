@@ -1,6 +1,7 @@
 package org.trl.model.dto;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.StringJoiner;
 
 public class ApiErrorDto {
@@ -36,6 +37,19 @@ public class ApiErrorDto {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ApiErrorDto)) return false;
+        ApiErrorDto that = (ApiErrorDto) o;
+        return Objects.equals(timestamp, that.timestamp) && Objects.equals(errorMessage, that.errorMessage) && Objects.equals(path, that.path);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timestamp, errorMessage, path);
     }
 
     @Override
