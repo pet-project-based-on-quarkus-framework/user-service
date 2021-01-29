@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.trl.exception.UserNotFoundException;
 import org.trl.repository.entity.UserEntity;
 
-import static java.lang.String.format;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+
+import static java.lang.String.format;
 
 /**
  * This interface is designed to support JPA for {@literal UserEntity}.
@@ -24,10 +24,9 @@ public class UserRepository {
 
     private static final String EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS = "One of parameters is illegal. Parameters must be " +
             "not equals to null, and parameters must be greater that zero. Check the parameter that are passed to the method.";
-    private static final String EXCEPTION_MESSAGE_USER_BY_USER_ID_NOT_EXIST = "User with this userId = %s not exist.";
+    private static final String EXCEPTION_MESSAGE_USER_BY_USER_ID_NOT_EXIST = "";
 
     private static final String createLogHeaderMessage = "************ create() ---> ";
-    private static final String getLogHeaderMessage = "************ get() ---> ";
     private static final String updateLogHeaderMessage = "************ update () ---> ";
     private static final String deleteLogHeaderMessage = "************ delete () ---> ";
 
@@ -71,26 +70,20 @@ public class UserRepository {
      *                                  or if id is equal or less zero.
      * @throws UserNotFoundException    in case if {@literal UserDTO} not exist with this id.
      */
-    public UserEntity get(Long id) {
+    public UserEntity find(Long id) {
+        UserEntity userResult;
 
-        if ((id == null) || (id <= 0)) {
-            LOG.error(getLogHeaderMessage + EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
-        }
+        userResult = entityManager.find(UserEntity.class, id);
 
-        LOG.debug(getLogHeaderMessage + " id = " + id);
-
-        UserEntity entity = entityManager.find(UserEntity.class, id);
-
-        if (entity == null) {
-            String message = format(EXCEPTION_MESSAGE_USER_BY_USER_ID_NOT_EXIST, id);
-            LOG.debug(getLogHeaderMessage + message);
+        if (userResult == null) {
+            String message = format("User with this userId = %s not exist.", id);
+            LOG.debug("In find() - {}", message);
             throw new UserNotFoundException(message);
         }
 
-        LOG.debug(getLogHeaderMessage + "userFromRepositoryById = " + entity);
+        LOG.debug("In find() - Found user: [{}].", userResult);
 
-        return entity;
+        return userResult;
     }
 
     /**

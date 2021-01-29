@@ -2,8 +2,9 @@ package org.trl.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.controller.dto.UserDTO;
+import org.trl.model.dto.UserDto;
 import org.trl.repository.UserRepository;
+import org.trl.repository.entity.UserEntity;
 import org.trl.service.UserService;
 import org.trl.service.converter.UserConverter;
 import org.trl.util.UserUtils;
@@ -20,13 +21,11 @@ import javax.inject.Inject;
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
+
     private static final String EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS = "One of parameters is illegal. Parameters must be " +
             "not equals to null, and parameters must be greater that zero. Check the parameter that are passed to the method.";
-    private static final String EXCEPTION_MESSAGE_USER_BY_USER_ID_NOT_EXIST = "User with this userId = %s not exist.";
-    private static final String EXCEPTION_MESSAGE_USERS_NOT_EXIST = "Users not exists.";
 
     private static final String createLogHeaderMessage = "************ create() ---> ";
-    private static final String getLogHeaderMessage = "************ get() ---> ";
     private static final String updateLogHeaderMessage = "************ update () ---> ";
     private static final String deleteLogHeaderMessage = "************ delete () ---> ";
 
@@ -52,7 +51,7 @@ public class UserServiceImpl implements UserService {
      * @throws IllegalArgumentException in case the given {@code user} is equals to {@literal null}.
      */
     @Override
-    public void create(UserDTO user) {
+    public void create(UserDto user) {
 
         if (user == null) {
             LOG.error(createLogHeaderMessage + EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
@@ -63,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
         userUtils.checkFieldsOfUser(user);
 
-        userRepository.create(userConverter.mapDTOToEntity(user));
+        userRepository.create(userConverter.mapDtoToEntity(user));
 
         LOG.debug(createLogHeaderMessage + "user = " + user + " added correctly.");
     }
@@ -77,19 +76,12 @@ public class UserServiceImpl implements UserService {
      *                                  or if id is equal or less zero.
      */
     @Override
-    public UserDTO get(Long id) {
-        UserDTO userResult = null;
+    public UserEntity get(Long id) {
+        UserEntity userResult;
 
-        if ((id == null) || (id <= 0)) {
-            LOG.error(getLogHeaderMessage + EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
-            throw new IllegalArgumentException(EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
-        }
+        userResult = userRepository.find(id);
 
-        LOG.debug(getLogHeaderMessage + "id = " + id);
-
-        userResult = userConverter.mapEntityToDTO(userRepository.get(id));
-
-        LOG.debug(getLogHeaderMessage + "userResult = " + userResult);
+        LOG.debug("In get() - Found user: [{}].", userResult);
 
         return userResult;
     }
@@ -105,8 +97,8 @@ public class UserServiceImpl implements UserService {
      *                                  Or user is equals to {@literal null}.
      */
     @Override
-    public UserDTO update(Long id, UserDTO user) {
-        UserDTO userResult = null;
+    public UserDto update(Long id, UserDto user) {
+        UserDto userResult = null;
 
         if ((user == null) || (id == null) || (id <= 0)) {
             LOG.error(updateLogHeaderMessage + EXCEPTION_MESSAGE_ILLEGAL_ARGUMENTS);
@@ -115,7 +107,7 @@ public class UserServiceImpl implements UserService {
 
         LOG.debug(updateLogHeaderMessage + "id = " + id + " user = " + user);
 
-        userResult = userConverter.mapEntityToDTO(userRepository.update(id, userConverter.mapDTOToEntity(user)));
+        userResult = userConverter.mapEntityToDto(userRepository.update(id, userConverter.mapDtoToEntity(user)));
 
         LOG.debug(updateLogHeaderMessage + "the updated instance of a user = " + userResult);
 

@@ -2,7 +2,7 @@ package org.trl.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.controller.dto.UserDTO;
+import org.trl.model.dto.UserDto;
 import org.trl.exception.IllegalValueException;
 
 import static java.lang.String.format;
@@ -39,7 +39,7 @@ public class UserUtils {
      * @throws IllegalArgumentException in case the given {@code user} is equals to {@literal null}.
      * @throws IllegalValueException    If some field of {@literal UserDTO} contains illegal value.
      */
-    public void checkFieldsOfUser(UserDTO user) {
+    public void checkFieldsOfUser(UserDto user) {
         String logHeaderMessage = "************ checkFieldsOfUser() ---> ";
         String messageNullValue = "Field %s not be equals to null, check the field that it has the 'user' parameter.";
         String messageIsEmpty = "Field %s is empty, check the field that it has the 'user' parameter.";

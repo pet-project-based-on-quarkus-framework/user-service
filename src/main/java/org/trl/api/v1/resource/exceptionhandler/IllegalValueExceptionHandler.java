@@ -1,22 +1,21 @@
-package org.trl.exception.exceptionhandler;
+package org.trl.api.v1.resource.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.trl.exception.IllegalValueException;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
 
-@Provider
-public class IllegalArgumentExceptionHandler implements ExceptionMapper<IllegalArgumentException> {
+public class IllegalValueExceptionHandler implements ExceptionMapper<IllegalValueException> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IllegalArgumentExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IllegalValueException.class);
 
     @Override
-    public Response toResponse(IllegalArgumentException exception) {
+    public Response toResponse(IllegalValueException exception) {
 
         LOG.error("Failed to handle request", exception);
 

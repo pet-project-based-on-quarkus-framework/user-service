@@ -1,4 +1,4 @@
-package org.trl.exception.exceptionhandler;
+package org.trl.api.v1.resource.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

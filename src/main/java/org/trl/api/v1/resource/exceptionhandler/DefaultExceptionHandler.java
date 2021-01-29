@@ -1,25 +1,27 @@
-package org.trl.exception.exceptionhandler;
+package org.trl.api.v1.resource.exceptionhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.trl.exception.IllegalValueException;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+import java.net.HttpURLConnection;
 
-public class IllegalValueExceptionHandler implements ExceptionMapper<IllegalValueException> {
+@Provider
+public class DefaultExceptionHandler implements ExceptionMapper<Exception> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IllegalValueException.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultExceptionHandler.class);
 
     @Override
-    public Response toResponse(IllegalValueException exception) {
+    public Response toResponse(Exception exception) {
 
         LOG.error("Failed to handle request", exception);
 
-        int statusCode = 422;
+        int statusCode = HttpURLConnection.HTTP_INTERNAL_ERROR;
 
         JsonObjectBuilder entityBuilder = Json.createObjectBuilder()
                 .add("exceptionType", exception.getClass().getName())
@@ -34,4 +36,5 @@ public class IllegalValueExceptionHandler implements ExceptionMapper<IllegalValu
                 .type(MediaType.APPLICATION_JSON)
                 .build();
     }
+
 }
