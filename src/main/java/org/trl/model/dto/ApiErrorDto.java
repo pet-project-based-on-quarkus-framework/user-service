@@ -1,4 +1,4 @@
-package org.trl.controller.dto;
+package org.trl.model.dto;
 
 import java.time.LocalDateTime;
 import java.util.StringJoiner;
